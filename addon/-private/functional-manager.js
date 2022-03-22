@@ -28,7 +28,7 @@ export default class FunctionalModifierManager {
   constructor(owner) {
     this.owner = owner;
     this.serviceCache = new WeakMap();
-    this.capabilities = capabilities('3.13');
+    this.capabilities = capabilities('3.22');
   }
 
   getServicesFor(fn) {
@@ -42,8 +42,7 @@ export default class FunctionalModifierManager {
     return services;
   }
 
-  createModifier(factory) {
-    const { class: fn } = factory;
+  createModifier(fn) {
     const services = this.getServicesFor(fn);
 
     return (...args) => fn(...services, ...args);
